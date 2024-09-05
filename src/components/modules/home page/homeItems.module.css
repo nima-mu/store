@@ -1,0 +1,26 @@
+.homeItems {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.homeItem{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.homeItem svg{
+    font-size: 3rem;
+    color: #e00000;
+}
+
+.homeItem p{
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.homeItem span{
+    font-size: .9rem;
+}

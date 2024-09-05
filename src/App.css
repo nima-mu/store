@@ -1,0 +1,14 @@
+.scroll-element {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.scroll-element.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-element.hidden {
+  opacity: 0;
+}

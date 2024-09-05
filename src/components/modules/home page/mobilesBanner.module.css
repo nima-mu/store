@@ -1,0 +1,79 @@
+.mobilesBanner {
+  width: 65%;
+  height: 500px;
+  margin: 1rem auto;
+  border-radius: 2.5rem;
+  background: linear-gradient(35deg, #1fbff5, #1aede2);
+  box-shadow: 0 0 15px #8f8f8fce;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.mobilesBanner__imageContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.mobilesBanner__imageContainer div {
+  height: 15%;
+}
+
+.mobilesBanner__imageContainer img {
+  height: 85%;
+  width: fit-content;
+  filter: drop-shadow(0 0 8px #ffffffda);
+}
+
+.mobilesBanner__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  line-height: 1;
+  margin-top: 25px;
+}
+
+.mobilesBanner__text span {
+  font-size: 1.1rem;
+}
+.mobilesBanner__text h4 {
+  font-size: 1.4rem;
+}
+.mobilesBanner__text h3 {
+  font-size: 3rem;
+  color: #ffffff90;
+  letter-spacing: 2.5px;
+}
+
+.mobilesBanner__text button {
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0;
+  font-weight: 600;
+  width: fit-content;
+  border-radius: 5rem;
+  border: none;
+  outline: none;
+  background-color: #fff;
+  color: #1fbff5;
+  position: relative;
+  overflow: hidden;
+}
+
+.mobilesBanner__text button::after {
+  content: " ";
+  width: 3%;
+  height: 200%;
+  position: absolute;
+  left: 140%;
+  top: -50%;
+  transform: rotate(-20deg);
+  z-index: 4;
+  border-radius: 5rem;
+  background-color: #1fbff5;
+  transition: 0.8s all;
+}
+
+.mobilesBanner__text button:hover::after {
+  left: -50%;
+}
