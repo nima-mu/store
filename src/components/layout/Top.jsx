@@ -1,10 +1,13 @@
 import { BiArrowFromBottom } from "react-icons/bi";
 import styles from "./top.module.css";
-import { CiAlignTop } from "react-icons/ci";
 
 function Top() {
+  let clickHandler = () => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  };
   return (
-    <div className={styles.top}>
+    <div className={styles.top} onClick={clickHandler}>
       <BiArrowFromBottom />
     </div>
   );

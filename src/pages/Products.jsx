@@ -1,9 +1,12 @@
-import React from 'react'
+import ProductsTempleate from "components/templates/ProductsTempleate";
+import React from "react";
 
 function Products() {
   return (
-    <div>Products</div>
-  )
+    <div>
+      <ProductsTempleate />
+    </div>
+  );
 }
 
-export default Products
+export default Products;

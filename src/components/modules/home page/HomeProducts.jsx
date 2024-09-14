@@ -32,11 +32,11 @@ function HomeProducts() {
               <img src={product.productImage} alt={product.productName} />
             </div>
             <p className={styles.product__name}>
-              {truncateStr(product.productName, 35)}
+              {truncateStr(product.productName, 30)}
             </p>
-            <p className={styles.product__price}>
+            <h4 className={styles.product__price}>
               {product.price.toLocaleString()} تومان
-            </p>
+            </h4>
             <button>مشاهده</button>
           </div>
         ))}

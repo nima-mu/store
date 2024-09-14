@@ -10,11 +10,17 @@
   box-sizing: border-box;
 }
 
+html{
+  scroll-behavior: smooth;
+}
+
 .active {
   color: #000 !important;
   font-weight: 600;
 }
 
-button{
+button,
+input,
+select {
   font-family: inherit;
 }

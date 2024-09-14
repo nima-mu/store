@@ -5,7 +5,6 @@ import Router from "route/Router";
 import products from "constants/productsConstant";
 
 function App() {
-  console.log(products);
   return (
     <BrowserRouter>
       <Layout>

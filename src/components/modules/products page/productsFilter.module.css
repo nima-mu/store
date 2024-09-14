@@ -1,0 +1,63 @@
+.productsFilter {
+  width: 18%;
+  padding: 0 0.5rem;
+}
+.productsFilter div {
+  width: 100%;
+  height: 3rem;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 3rem;
+  overflow: hidden;
+  background: linear-gradient(90deg, #eee, #c7c7c7);
+}
+.productsFilter input {
+  width: 80%;
+  height: 100%;
+  padding: 1rem;
+  background-color: inherit;
+  height: 2.5rem;
+}
+
+.productsFilter button {
+  height: 80%;
+  aspect-ratio: 1/1;
+  cursor: pointer;
+  border-radius: 3.5rem;
+  margin: auto 0 auto 0.5rem;
+  background-color: red;
+  color: #fff;
+  box-shadow: 2px 1px 5px #765959;
+  transition: box-shadow 0.1s;
+}
+.productsFilter button:hover {
+  box-shadow: none;
+  background-color: #df0b0b;
+}
+.productsFilter input,
+.productsFilter button {
+  border: 0;
+  outline: 0;
+  font-size: 1.2rem;
+}
+
+.productsFilter h3 {
+  margin: 2rem 0 1rem;
+}
+
+.productsFilter ul {
+}
+.productsFilter li {
+  list-style: none;
+  width: 100%;
+  padding-right: 10%;
+  cursor: pointer;
+  margin: .3rem 0;
+  border-radius: 1rem;
+}
+
+.productsFilter .active{
+  background-color: green;
+  color: #fff;
+  padding: .5rem 10%;
+}
