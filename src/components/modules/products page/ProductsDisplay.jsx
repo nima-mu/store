@@ -5,8 +5,10 @@ function ProductsDisplay({ displayed }) {
   return (
     <div className={styles.productsDisplay}>
       {displayed.map((product) => (
-        <div key={product.id}>
+        <div key={product.id} className={styles.product}>
+          <div className={styles.productImageContainer}>
           <img src={product.productImage} />
+          </div>
           <h4>{product.productName}</h4>
           <p>{product.price.toLocaleString()} تومان</p>
           <Link to={`/product/${product.id}`}>

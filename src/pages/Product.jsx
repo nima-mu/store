@@ -1,3 +1,4 @@
+import ProductTempleate from "components/templates/ProductTempleate";
 import products from "constants/productsConstant";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -10,10 +11,8 @@ function Product() {
     setProduct(product)
   }, []);
   console.log(product);
-  
 
-  let {productName,price,productImage,colors} = product
-  return <div>{productName}</div>;
+  return <ProductTempleate product={product} />;
 }
 
 export default Product;

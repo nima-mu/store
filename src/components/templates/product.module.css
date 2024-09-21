@@ -1,0 +1,128 @@
+.product {
+  width: 80%;
+  margin: 0 auto;
+  background-color: #ececec;
+  padding: 2rem 3rem;
+  border-radius: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 3rem;
+  min-height: 600px;
+}
+.productImage {
+  width: 50%;
+  aspect-ratio: 1/1;
+  background-color: #fff;
+  border-radius: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.productImage img {
+  max-width: 80%;
+  max-height: 80%;
+  mix-blend-mode: multiply;
+}
+
+.productDetails {
+  width: 50%;
+  margin-top: 1rem;
+}
+.ProductName {
+  padding-right: 1rem;
+  color: #ed9a00;
+}
+.ProductDescription {
+  margin: 1rem 0;
+  background-color: #fdfdfd;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+.ProductDescription h5 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #ed9a00;
+}
+.buyProduct {
+  padding-right: 1rem;
+  margin: 1rem 0;
+}
+.productPrice {
+  font-size: 2rem;
+  color: #ed9a00;
+  display: block;
+}
+.buyProductWrapper {
+  display: flex;
+  justify-content: flex-start;
+  gap: 2rem;
+  align-items: center;
+}
+.buyProductButton {
+  background-color: #ed9a00;
+  padding: 0.7rem 1.4rem;
+  border-radius: 2rem;
+  border: none;
+  font-weight: 500;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: transform 0.4s;
+}
+.buyProductButton:hover {
+  transform: scale(1.1);
+}
+.productCount {
+  width: 130px;
+  height: 35px;
+  margin: 1rem 0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  font-weight: 700;
+}
+.ProductCountPlus,
+.ProductCountMinus {
+  border: none;
+  width: 30%;
+  height: 100%;
+  background-color: #ed9a00;
+  font-weight: 700;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.productCount span {
+  height: fit-content;
+  line-height: 0.1;
+}
+.inactiveButton{
+  transition: filter .1s;
+}
+.inactiveButton:hover {
+  filter: brightness(.7);
+
+}
+.productColor {
+}
+.productFeatures {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin: 1rem 0;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.productFeatureNames {
+}
+.productFeatureValue {
+  direction: ltr;
+}
+.productFeatures p {
+  margin: 0.5rem 0;
+}
