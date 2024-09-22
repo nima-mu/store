@@ -37,7 +37,9 @@ function HomeProducts() {
             <h4 className={styles.product__price}>
               {product.price.toLocaleString()} تومان
             </h4>
+            <Link to={`/product/${product.id}`}>
             <button>مشاهده</button>
+            </Link>
           </div>
         ))}
       </div>
