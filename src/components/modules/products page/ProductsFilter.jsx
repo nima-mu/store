@@ -3,12 +3,12 @@ import styles from "./productsFilter.module.css";
 import { BiSearch } from "react-icons/bi";
 import { useSearchParams } from "react-router-dom";
 
-function ProductsFilter({ products, displayed, setDisplayed }) {
-  let [search, setSearch] = useState("");
-  let [category, setCategory] = useState("همه دسته ها");
-  let [brand, setBrand] = useState("همه برند ها");
+function ProductsFilter({ products, setDisplayed }) {
+  const [search, setSearch] = useState("");
+  const [category, setCategory] = useState("همه دسته ها");
+  const [brand, setBrand] = useState("همه برند ها");
 
-  let [serachParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const categories = [
     "همه دسته ها",
@@ -20,15 +20,15 @@ function ProductsFilter({ products, displayed, setDisplayed }) {
   ];
 
   useEffect(() => {
-    let data = products.filter((product) => {
-      let matchesSearch = product.productName
+    const data = products.filter((product) => {
+      const matchesSearch = product.productName
         .toLowerCase()
         .includes(search.toLowerCase());
 
-      let matchesCategory =
+      const matchesCategory =
         category === "همه دسته ها" || product.category === category;
 
-      let matchesBrand = brand === "همه برند ها" || product.brand === brand;
+      const matchesBrand = brand === "همه برند ها" || product.brand === brand;
 
       return matchesSearch && matchesCategory && matchesBrand;
     });
@@ -38,15 +38,15 @@ function ProductsFilter({ products, displayed, setDisplayed }) {
       category: category === "همه دسته ها" ? "All" : category,
       brand: brand === "همه برند ها" ? "All" : brand,
     });
-  }, [search, category, brand]);
+  }, [search, category, brand, products, setDisplayed, setSearchParams]);
 
   useEffect(() => {
-    setSearch(() => serachParams.get("search"));
-    let queryCategory = serachParams.get("category");
-    setCategory(queryCategory === "All" ? "همه دسته ها" : queryCategory);
-    let queryBrand = serachParams.get("brand");
-    setBrand(queryBrand === "All" ? "همه برند ها" : queryBrand);
-  }, []);
+    setSearch(searchParams.get("search") || "");
+    const queryCategory = searchParams.get("category");
+    setCategory(queryCategory === "All" ? "همه دسته ها" : queryCategory || "همه دسته ها");
+    const queryBrand = searchParams.get("brand");
+    setBrand(queryBrand === "All" ? "همه برند ها" : queryBrand || "همه برند ها");
+  }, [searchParams]);
 
   return (
     <div className={styles.productsFilter}>
@@ -67,7 +67,7 @@ function ProductsFilter({ products, displayed, setDisplayed }) {
           <li
             key={index}
             onClick={() => setCategory(item)}
-            className={item === category ? styles.active : null}
+            className={item === category ? styles.active : ""}
           >
             {item}
           </li>
@@ -79,7 +79,7 @@ function ProductsFilter({ products, displayed, setDisplayed }) {
           <li
             key={index}
             onClick={() => setBrand(item)}
-            className={item === brand ? styles.active : null}
+            className={item === brand ? styles.active : ""}
           >
             {item}
           </li>

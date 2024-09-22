@@ -7,22 +7,22 @@ const cartReducer = (state, action) => {
     case "ADD":
       return {
         ...state,
-        items: [...state.items, action.payload],
-        totalPrice: state.totalPrice + action.payload.price * action.payload.qty,
-        totalItems: state.totalItems + action.payload.qty,
+        items: [...state.items, {...action.payload, qty:1}],
+        totalPrice: state.totalPrice + action.payload.price,
+        totalItems: state.totalItems + 1,
       };
 
     case "INCREASE": {
       const updatedItems = state.items.map((item) =>
         item.id === action.payload.id
-          ? { ...item, qty: item.qty + action.payload.qty }
+          ? { ...item, qty: item.qty + 1 }
           : item
       );
       return {
         ...state,
         items: updatedItems,
-        totalPrice: state.totalPrice + action.payload.price * action.payload.qty,
-        totalItems: state.totalItems + action.payload.qty,
+        totalPrice: state.totalPrice + action.payload.price,
+        totalItems: state.totalItems + 1,
       };
     }
 

@@ -1,16 +1,30 @@
 import { useContext, useState } from "react";
 import styles from "./product.module.css";
 import { CartContext } from "services/CartProvider";
+import { FaRegTrashCan } from "react-icons/fa6";
 
 function ProductTempleate({ product }) {
-  let [count, setCount] = useState(1);
+  let [count, setCount] = useState(0);
   let { id, productName, price, productImage, colors, category } = product;
   let { cartState, dispatch } = useContext(CartContext);
+
+  let clickHandler = async (type) => {
+    type === "ADD" || type === "INCREASE"
+      ? setCount((prevCount) => prevCount + 1)
+      : setCount((prevCount) => prevCount - 1);
+    await dispatch({
+      type,
+      payload: { id, price },
+    });
+  };
+
+  let countInCart = cartState.items.find((item) => item.id === id)?.qty;
+  console.log(countInCart);
 
   return (
     <div className={styles.product}>
       <div className={styles.productImage}>
-      <img src={productImage} alt={productName} />
+        <img src={productImage} alt={productName} />
       </div>
       <div className={styles.productDetails}>
         <h1 className={styles.ProductName}>{productName}</h1>
@@ -30,36 +44,45 @@ function ProductTempleate({ product }) {
           <span className={styles.productPrice}>
             {price?.toLocaleString()} تومان
           </span>
-          <div className={styles.buyProductWrapper}>
+          {countInCart ? (
             <div className={styles.productCount}>
               <button
-                onClick={() => setCount((prev) => prev + 1)}
+                onClick={() => clickHandler("INCREASE")}
                 className={styles.ProductCountPlus}
               >
                 <span>+</span>
               </button>
               <p>{count}</p>
-              <button
-                onClick={() => count > 1 && setCount((prev) => prev - 1)}
-                className={`${styles.ProductCountMinus} ${
-                  count <= 1 && styles.inactiveButton
-                }`}
-              >
-                <span>-</span>
-              </button>
+              {countInCart > 1 ? (
+                <button
+                  onClick={() => clickHandler("DECREASE")}
+                  className={`${styles.ProductCountMinus} ${
+                    count <= 1 && styles.inactiveButton
+                  }`}
+                >
+                  <span>-</span>
+                </button>
+              ) : (
+                <button
+                  onClick={() => clickHandler("REMOVE")}
+                  className={`${styles.ProductCountMinus} ${
+                    count <= 1 && styles.inactiveButton
+                  }`}
+                >
+                  <span>
+                    <FaRegTrashCan />
+                  </span>
+                </button>
+              )}
             </div>
+          ) : (
             <button
-              onClick={() =>
-                dispatch({
-                  type: "ADD",
-                  payload: { id, price, qty: 1 },
-                })
-              }
+              onClick={() => clickHandler("ADD")}
               className={styles.buyProductButton}
             >
               افزودن به سبد خرید
             </button>
-          </div>
+          )}
           <div className={styles.productColor}></div>
         </div>
         <hr color="#ed9a00" />

@@ -52,12 +52,7 @@
   font-size: 2rem;
   color: #ed9a00;
   display: block;
-}
-.buyProductWrapper {
-  display: flex;
-  justify-content: flex-start;
-  gap: 2rem;
-  align-items: center;
+  margin-bottom: .5rem;
 }
 .buyProductButton {
   background-color: #ed9a00;
@@ -103,10 +98,6 @@
 }
 .inactiveButton{
   transition: filter .1s;
-}
-.inactiveButton:hover {
-  filter: brightness(.7);
-
 }
 .productColor {
 }

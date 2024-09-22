@@ -1,8 +1,11 @@
 import { Link, NavLink } from "react-router-dom";
 import { CiShoppingBasket } from "react-icons/ci";
 import styles from "./header.module.css";
+import { CartContext } from "services/CartProvider";
+import { useContext } from "react";
 
 function Header() {
+  let {cartState}  = useContext(CartContext)
   return (
     <header className={styles.header}>
       <div className={styles.header__right}>
@@ -25,6 +28,7 @@ function Header() {
         </p>
         <Link to="/cart">
           <CiShoppingBasket />
+          <span>{cartState.totalItems}</span>
         </Link>
       </div>
     </header>
