@@ -10,7 +10,6 @@ function Product() {
     let product = products.find((item) => item.id === +id);
     setProduct(product)
   }, []);
-  console.log(product);
 
   return <ProductTempleate product={product} />;
 }
