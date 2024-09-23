@@ -1,6 +1,6 @@
 let products = [
   {
-    colors: ["black", "gold"],
+    colors: ["blue","black", "gold"],
     id: 1,
     productName: "iPhone 13 Pro CH",
     rate: 4,
@@ -152,7 +152,7 @@ let products = [
     updatedAt: "2024-07-14T06:28:50.588Z",
   },
   {
-    colors: ["blue"],
+    colors: ["blue","gold"],
     id: 10,
     productName: "iPhone 13 Pro Max CH",
     rate: 3,

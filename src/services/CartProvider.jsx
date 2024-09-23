@@ -7,16 +7,14 @@ const cartReducer = (state, action) => {
     case "ADD":
       return {
         ...state,
-        items: [...state.items, {...action.payload, qty:1}],
+        items: [...state.items, { ...action.payload, qty: 1 }],
         totalPrice: state.totalPrice + action.payload.price,
         totalItems: state.totalItems + 1,
       };
 
     case "INCREASE": {
       const updatedItems = state.items.map((item) =>
-        item.id === action.payload.id
-          ? { ...item, qty: item.qty + 1 }
-          : item
+        item.id === action.payload.id ? { ...item, qty: item.qty + 1 } : item
       );
       return {
         ...state,
@@ -27,11 +25,13 @@ const cartReducer = (state, action) => {
     }
 
     case "DECREASE": {
-      const updatedItems = state.items.map((item) =>
-        item.id === action.payload.id
-          ? { ...item, qty: Math.max(0, item.qty - 1) }
-          : item
-      ).filter((item) => item.qty > 0);
+      const updatedItems = state.items
+        .map((item) =>
+          item.id === action.payload.id
+            ? { ...item, qty: Math.max(0, item.qty - 1) }
+            : item
+        )
+        .filter((item) => item.qty > 0);
       return {
         ...state,
         items: updatedItems,

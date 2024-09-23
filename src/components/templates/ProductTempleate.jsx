@@ -3,8 +3,10 @@ import styles from "./product.module.css";
 import { CartContext } from "services/CartProvider";
 import { FaRegTrashCan } from "react-icons/fa6";
 
-function ProductTempleate({ product }) {
+function ProductTemplate({ product }) {
   let [count, setCount] = useState(0);
+  let [selectedColor, setSelectedColor] = useState(null);
+  let [hoveredColor, setHoveredColor] = useState(null);
   let { id, productName, price, productImage, colors, category } = product;
   let { cartState, dispatch } = useContext(CartContext);
 
@@ -14,15 +16,21 @@ function ProductTempleate({ product }) {
       : setCount((prevCount) => prevCount - 1);
     await dispatch({
       type,
-      payload: { id, price },
+      payload: { id, price, color: selectedColor },
     });
   };
 
   useEffect(() => {
     const countInCart = cartState.items.find((item) => item.id === id)?.qty || 0;
     setCount(countInCart);
-  }, [cartState, id]); 
-  
+  }, [cartState, id]);
+
+  useEffect(() => {
+    if (colors && colors.length > 0) {
+      setSelectedColor(colors[0]);
+    }
+  }, [colors]);
+
   return (
     <div className={styles.product}>
       <div className={styles.productImage}>
@@ -58,8 +66,8 @@ function ProductTempleate({ product }) {
               <p>{count}</p>
               {count > 1 ? (
                 <button
-                onClick={() => clickHandler("DECREASE")}
-                className={`${styles.ProductCountMinus} ${
+                  onClick={() => clickHandler("DECREASE")}
+                  className={`${styles.ProductCountMinus} ${
                     count <= 1 && styles.inactiveButton
                   }`}
                 >
@@ -67,10 +75,10 @@ function ProductTempleate({ product }) {
                 </button>
               ) : (
                 <button
-                onClick={() => clickHandler("REMOVE")}
-                className={`${styles.ProductCountMinus} ${
-                  count <= 1 && styles.inactiveButton
-                }`}
+                  onClick={() => clickHandler("REMOVE")}
+                  className={`${styles.ProductCountMinus} ${
+                    count <= 1 && styles.inactiveButton
+                  }`}
                 >
                   <span>
                     <FaRegTrashCan />
@@ -86,7 +94,35 @@ function ProductTempleate({ product }) {
               افزودن به سبد خرید
             </button>
           )}
-          <div className={styles.productColor}></div>
+          <div className={styles.productColor}>
+            {colors && colors.length > 0 && (
+              <div className={styles.colorSelector}>
+                <p>انتخاب رنگ:</p>
+                <div className={styles.colorOptions}>
+                  {colors.map((color, index) => (
+                    <div
+                      key={index}
+                      className={styles.colorOptionWrapper}
+                      onMouseEnter={() => setHoveredColor(color)}
+                      onMouseLeave={() => setHoveredColor(null)}
+                    >
+                      <button
+                        className={`${styles.colorOption} ${
+                          selectedColor === color ? styles.selectedColor : ''
+                        }`}
+                        style={{ backgroundColor: color }}
+                        onClick={() => setSelectedColor(color)}
+                        aria-label={`Select ${color} color`}
+                      />
+                      {hoveredColor === color && (
+                        <span className={styles.colorTooltip}>{color}</span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
         </div>
         <hr color="#ed9a00" />
         <div className={styles.productFeatures}>
@@ -122,4 +158,4 @@ function ProductTempleate({ product }) {
   );
 }
 
-export default ProductTempleate;
+export default ProductTemplate;
