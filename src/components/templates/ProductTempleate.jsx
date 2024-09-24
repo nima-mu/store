@@ -132,8 +132,8 @@ function ProductTemplate({ product }) {
 
               {category === "لپ تاپ" ? (
                 <>
-                  <p>گرافیک: </p>
                   <p>رم: </p>
+                  <p>گرافیک: </p>
                 </>
               ) : (
                 <>

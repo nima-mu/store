@@ -1,9 +1,12 @@
-import React from 'react'
+import AuthTempleate from "components/templates/AuthTempleate";
+import React from "react";
 
 function Auth() {
   return (
-    <div>Auth</div>
-  )
+    <div>
+      <AuthTempleate />
+    </div>
+  );
 }
 
-export default Auth
+export default Auth;
