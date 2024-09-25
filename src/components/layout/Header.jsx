@@ -37,9 +37,9 @@ function Header() {
             </Link>
           )}
         </p>
-        <Link to="/cart">
-          <CiShoppingBasket className={styles.cartIcon} />
-          <span>{cartState.totalItems}</span>
+        <Link to="/cart" className={styles.cartIcon}>
+          <CiShoppingBasket />
+          <div>{cartState.totalItems}</div>
         </Link>
       </div>
     </header>

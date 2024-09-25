@@ -1,8 +1,9 @@
+import CartTempleate from 'components/templates/CartTempleate'
 import React from 'react'
 
 function Cart() {
   return (
-    <div>Cart</div>
+    <div><CartTempleate /></div>
   )
 }
 
