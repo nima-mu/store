@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import styles from "./auth.module.css";
+import { useUser } from "services/UserProvider";
 
 const AuthTemplate = () => {
+  const { login } = useUser();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -21,16 +23,13 @@ const AuthTemplate = () => {
       return;
     }
 
-    setIsLoading(true); 
-
-    localStorage.setItem("userName", name);
-    localStorage.setItem("userEmail", email);
+    setIsLoading(true);
+    login(name, email);
 
     setTimeout(() => {
       setIsLoading(false);
       setIsSubmitted(true);
     }, 500);
-
   };
 
   if (isSubmitted) {
@@ -71,8 +70,12 @@ const AuthTemplate = () => {
               required
             />
           </div>
-          <button type="submit" className={styles.submitBtn} disabled={isLoading}>
-            {isLoading ? 'در حال ثبت...' : 'ورود'}
+          <button
+            type="submit"
+            className={styles.submitBtn}
+            disabled={isLoading}
+          >
+            {isLoading ? "در حال ثبت..." : "ورود"}
           </button>
         </form>
       </div>
