@@ -1,14 +1,16 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./product.module.css";
-import { CartContext } from "services/CartProvider";
+import { CartContext, useCart } from "services/CartProvider";
 import { FaRegTrashCan } from "react-icons/fa6";
+import useScrollReveal from "hook/useScrollReveal";
 
 function ProductTemplate({ product }) {
   let [count, setCount] = useState(0);
   let [selectedColor, setSelectedColor] = useState(null);
   let [hoveredColor, setHoveredColor] = useState(null);
   let { id, productName, price, productImage, colors, category } = product;
-  let { cartState, dispatch } = useContext(CartContext);
+  let { cartState, dispatch } = useCart();
+  const { ref, isVisible } = useScrollReveal();
 
   let clickHandler = async (type) => {
     type === "ADD" || type === "INCREASE"
@@ -21,7 +23,8 @@ function ProductTemplate({ product }) {
   };
 
   useEffect(() => {
-    const countInCart = cartState.items.find((item) => item.id === id)?.qty || 0;
+    const countInCart =
+      cartState.items.find((item) => item.id === id)?.qty || 0;
     setCount(countInCart);
   }, [cartState, id]);
 
@@ -33,8 +36,15 @@ function ProductTemplate({ product }) {
 
   return (
     <div className={styles.product}>
-      <div className={styles.productImage}>
-        <img src={productImage} alt={productName} />
+      <div
+        className={styles.productImage}
+      >
+        <img
+          src={productImage}
+          alt={productName}
+          ref={ref}
+          className={`scroll-element ${isVisible ? "visible" : "hidden"}`}
+        />
       </div>
       <div className={styles.productDetails}>
         <h1 className={styles.ProductName}>{productName}</h1>
@@ -108,7 +118,7 @@ function ProductTemplate({ product }) {
                     >
                       <button
                         className={`${styles.colorOption} ${
-                          selectedColor === color ? styles.selectedColor : ''
+                          selectedColor === color ? styles.selectedColor : ""
                         }`}
                         style={{ backgroundColor: color }}
                         onClick={() => setSelectedColor(color)}

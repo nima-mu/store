@@ -58,6 +58,7 @@
   color: #1fbff5;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .mobilesBanner__text button::after {

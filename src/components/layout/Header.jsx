@@ -1,11 +1,15 @@
 import { Link, NavLink } from "react-router-dom";
 import { CiShoppingBasket } from "react-icons/ci";
 import styles from "./header.module.css";
-import { CartContext } from "services/CartProvider";
-import { useContext } from "react";
+import { CartContext, useCart } from "services/CartProvider";
+import { RxDashboard } from "react-icons/rx";
 
 function Header() {
-  let {cartState}  = useContext(CartContext)
+  let { cartState } = useCart()
+  let userName = localStorage.getItem("userName");
+  let userEmail = localStorage.getItem("userEmail");
+  let isLogedIn = !!userName && !!userEmail;
+
   return (
     <header className={styles.header}>
       <div className={styles.header__right}>
@@ -24,10 +28,16 @@ function Header() {
       </div>
       <div className={styles.header__left}>
         <p>
-          <Link to="/auth">ورود/ثبت نام</Link>
+          {!isLogedIn ? (
+            <Link to="/auth">ورود/ثبت نام</Link>
+            ) : (
+              <Link to="/dashboard">
+              <RxDashboard className={styles.dashboardIcon} />
+              </Link>
+              )}
         </p>
         <Link to="/cart">
-          <CiShoppingBasket />
+          <CiShoppingBasket className={styles.cartIcon} />
           <span>{cartState.totalItems}</span>
         </Link>
       </div>

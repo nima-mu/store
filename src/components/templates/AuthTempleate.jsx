@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import styles from "./auth.module.css";
 
-const AuthTempleate = () => {
+const AuthTemplate = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -14,11 +15,22 @@ const AuthTempleate = () => {
       return;
     }
 
-    // Store in local storage
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+      alert("Please enter a valid email address");
+      return;
+    }
+
+    setIsLoading(true); 
+
     localStorage.setItem("userName", name);
     localStorage.setItem("userEmail", email);
 
-    setIsSubmitted(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      setIsSubmitted(true);
+    }, 500);
+
   };
 
   if (isSubmitted) {
@@ -59,8 +71,8 @@ const AuthTempleate = () => {
               required
             />
           </div>
-          <button type="submit" className={styles.submitBtn}>
-            ورود
+          <button type="submit" className={styles.submitBtn} disabled={isLoading}>
+            {isLoading ? 'در حال ثبت...' : 'ورود'}
           </button>
         </form>
       </div>
@@ -68,4 +80,4 @@ const AuthTempleate = () => {
   );
 };
 
-export default AuthTempleate;
+export default AuthTemplate;

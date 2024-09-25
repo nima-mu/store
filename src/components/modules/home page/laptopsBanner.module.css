@@ -36,6 +36,7 @@
   font-size: 1.2rem;
   font-weight: 600;
   transition: 0.4s all;
+  cursor: pointer;
 }
 
 .laptopsBanner button:hover {
