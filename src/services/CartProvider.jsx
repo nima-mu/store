@@ -14,7 +14,7 @@ const cartReducer = (state, action) => {
 
     case "INCREASE": {
       console.log(23);
-      
+
       const updatedItems = state.items.map((item) =>
         item.id === action.payload.id ? { ...item, qty: item.qty + 1 } : item
       );
@@ -48,6 +48,13 @@ const cartReducer = (state, action) => {
         items: state.items.filter((item) => item.id !== action.payload.id),
         totalPrice: state.totalPrice - action.payload.price,
         totalItems: state.totalItems - 1,
+      };
+
+    case "REMOVE-All":
+      return {
+        items: [],
+        totalPrice: 0,
+        totalItems: 0,
       };
 
     default:

@@ -92,3 +92,22 @@
   font-size: 18px;
   color: #333;
 }
+
+.cart__button{
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: .7rem;
+  padding: .6rem ;
+  margin-top: 1rem;
+  background-color: green;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cart-complete{
+  text-align: center;
+  line-height: 2;
+}
