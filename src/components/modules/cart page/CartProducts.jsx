@@ -1,16 +1,25 @@
 import React from "react";
 import { useCart } from "services/CartProvider";
 import CartProduct from "./CartProduct";
+import "./cart.css";
 
 function CartProducts() {
-  let { cartState, dispatch } = useCart();
+  let { cartState } = useCart();
+  let { items, totalItems, totalPrice } = cartState;
+
 
   return (
-    <div>
-      {cartState?.items.map((item) => (
-        <CartProduct item={item} />
-      ))}
-      {cartState.totalPrice} - {cartState.totalItems}
+    <div className="cart-wrapper">
+      <div className="cart">
+        <h2>Shopping Cart</h2>
+        {items.map((item) => (
+          <CartProduct key={item.id} item={item}/>
+        ))}
+        <div className="cart-total">
+          <strong>Total:</strong>
+          <strong>{totalPrice.toLocaleString()} تومان</strong>
+        </div>
+      </div>
     </div>
   );
 }

@@ -13,6 +13,8 @@ const cartReducer = (state, action) => {
       };
 
     case "INCREASE": {
+      console.log(23);
+      
       const updatedItems = state.items.map((item) =>
         item.id === action.payload.id ? { ...item, qty: item.qty + 1 } : item
       );

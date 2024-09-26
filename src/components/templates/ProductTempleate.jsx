@@ -18,7 +18,7 @@ function ProductTemplate({ product }) {
       : setCount((prevCount) => prevCount - 1);
     await dispatch({
       type,
-      payload: { id, price, color: selectedColor,image:productImage,productName },
+      payload: { id, price, color: selectedColor,image:productImage,name: productName },
     });
   };
 
