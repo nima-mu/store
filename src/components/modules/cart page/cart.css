@@ -84,6 +84,11 @@
   background-color: #c90909 !important;
 }
 
+.cart-empty{
+  text-align: center;
+  line-height: 2;
+}
+
 .cart-total {
   display: flex;
   justify-content: space-between;
@@ -108,6 +113,12 @@
 }
 
 .cart-complete{
+  font-weight: 700;
   text-align: center;
   line-height: 2;
+}
+
+.cart-complete img{
+  width: 100%;
+  mix-blend-mode: multiply;
 }

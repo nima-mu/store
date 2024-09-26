@@ -20,8 +20,14 @@ function CartProducts() {
       <div className="cart">
         {isComplete ? (
           <div className="cart-complete">
+            <img src="/images/delivery.jpg" />
             <h3>خرید با موفقیت انجام شد</h3>
             <p>ممنون از اعتماد شما</p>
+          </div>
+        ) : totalItems === 0 ? (
+          <div className="cart-empty">
+            <img src="/images/empty-cart.svg" />
+            <h3> سبد خرید شما خالی است!</h3>
           </div>
         ) : (
           <>
