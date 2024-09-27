@@ -11,7 +11,7 @@ function CartProducts() {
   useEffect(() => setIsComplete(false), []);
 
   let clickHandler = () => {
-    dispatch("REMOVE-ALL");
+    dispatch({ type: "REMOVE-ALL" });
     setIsComplete(true);
   };
 
