@@ -2,13 +2,9 @@ import { Link, NavLink } from "react-router-dom";
 import { CiShoppingBasket } from "react-icons/ci";
 import styles from "./header.module.css";
 import { useCart } from "services/CartProvider";
-import { RxDashboard } from "react-icons/rx";
-import { useUser } from "services/UserProvider";
 
 function Header() {
   let { cartState } = useCart();
-  let { user } = useUser();
-  let isLogedIn = !!user.name && !!user.email;
 
   return (
     <header className={styles.header}>
@@ -28,14 +24,7 @@ function Header() {
       </div>
       <div className={styles.header__left}>
         <p>
-          {console.log(user)}
-          {!isLogedIn ? (
-            <Link to="/auth">ورود/ثبت نام</Link>
-          ) : (
-            <Link to="/dashboard">
-              <RxDashboard className={styles.dashboardIcon} />
-            </Link>
-          )}
+          <Link to="/auth">ورود/ثبت نام</Link>
         </p>
         <Link to="/cart" className={styles.cartIcon}>
           <CiShoppingBasket />

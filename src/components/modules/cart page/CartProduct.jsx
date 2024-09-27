@@ -7,10 +7,7 @@ function CartProduct({ item }) {
 
   let { id, name, price, qty } = item;
   let dispatcher = (type) => {
-    console.log(5);
-
     dispatch({ type, payload: { id, price } });
-    console.log(8);
   };
 
   return (
@@ -24,11 +21,14 @@ function CartProduct({ item }) {
           <button onClick={() => dispatcher("INCREASE")}>+</button>
           <span>{qty}</span>
           {qty > 1 && <button onClick={() => dispatcher("DECREASE")}>-</button>}
-        {qty === 1 && (
-          <button className="remove-item" onClick={() => dispatcher("REMOVE")}>
-            <LuTrash2 />
-          </button>
-        )}
+          {qty === 1 && (
+            <button
+              className="remove-item"
+              onClick={() => dispatcher("REMOVE")}
+            >
+              <LuTrash2 />
+            </button>
+          )}
         </div>
       </div>
     </div>
