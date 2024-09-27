@@ -1,15 +1,30 @@
+import { useQuery } from "@tanstack/react-query";
 import ProductTempleate from "components/templates/ProductTempleate";
-import products from "constants/productsConstant";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import axios from "axios"; // Import axios here
 
 function Product() {
   let { id } = useParams();
-  let [product,setProduct] = useState({});
+  let [product, setProduct] = useState(null);
+
+  const { data, error, isLoading } = useQuery({
+    queryKey: ["products"],
+    queryFn: () =>
+      axios.get("http://localhost:8000/products").then((res) => res.data),
+  });
+
   useEffect(() => {
-    let product = products.find((item) => item.id === +id);
-    setProduct(product)
-  }, []);
+    if (data) {
+      const foundProduct = data.find((item) => item.id === id);
+      setProduct(foundProduct || null);
+    }
+  }, [data, id]);
+
+  if (isLoading) return <div>Loading product...</div>;
+  if (error) return <div>Error loading product: {error.message}</div>;
+
+  if (!product) return <div>Product not found</div>;
 
   return <ProductTempleate product={product} />;
 }

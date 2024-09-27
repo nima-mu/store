@@ -2,22 +2,42 @@ import ProductsTitle from "components/modules/products page/ProductsTitle";
 import ProductsDisplay from "components/modules/products page/ProductsDisplay";
 import ProductsFilter from "components/modules/products page/ProductsFilter";
 import styles from "./products.module.css";
-import products from "constants/productsConstant";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
+function ProductsTemplate() {
+  const [displayed, setDisplayed] = useState([]);
 
-function ProductsTempleate() {
-  let [displayed, setDisplayed] = useState(products);
+  const { data, error, isLoading } = useQuery({
+    queryKey: ["products"], // Updated to the new object format
+    queryFn: () =>
+      axios.get("http://localhost:8000/products").then((res) => res.data), // Assuming the response structure
+  });
+
+  useEffect(() => {
+    console.log(data);
+    if (data) {
+      setDisplayed(data);
+    }
+  }, [data]);
+
+  if (isLoading) return <div>Loading products...</div>;
+  if (error) return <div>Error loading products: {error.message}</div>;
 
   return (
     <div>
       <ProductsTitle />
       <div className={styles.productsLayout}>
-        <ProductsFilter products={products} displayed={displayed} setDisplayed={setDisplayed} />
+        <ProductsFilter
+          products={data}
+          displayed={displayed}
+          setDisplayed={setDisplayed}
+        />
         <ProductsDisplay displayed={displayed} />
       </div>
     </div>
   );
 }
 
-export default ProductsTempleate;
+export default ProductsTemplate;

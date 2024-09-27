@@ -12,15 +12,15 @@ function ProductsFilter({ products, setDisplayed }) {
 
   const categories = [
     "همه دسته ها",
-    ...new Set(products.map((product) => product.category)),
+    ...new Set(products?.map((product) => product.category)),
   ];
   const brands = [
     "همه برند ها",
-    ...new Set(products.map((product) => product.brand)),
+    ...new Set(products?.map((product) => product.brand)),
   ];
 
   useEffect(() => {
-    const data = products.filter((product) => {
+    const data = products?.filter((product) => {
       const matchesSearch = product.productName
         .toLowerCase()
         .includes(search.toLowerCase());

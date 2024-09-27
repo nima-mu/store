@@ -4,7 +4,7 @@ import styles from "./productsDisplay.module.css";
 function ProductsDisplay({ displayed }) {
   return (
     <div className={styles.productsDisplay}>
-      {displayed.map((product) => (
+      {displayed?.map((product) => (
         <div key={product.id} className={styles.product}>
           <div className={styles.productImageContainer}>
           <img src={product.productImage} />

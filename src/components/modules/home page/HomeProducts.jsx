@@ -1,11 +1,24 @@
-import products from "constants/productsConstant";
 import styles from "./homeProducts.module.css";
 import truncateStr from "services/truncateStr";
 import { Link } from "react-router-dom";
 import useScrollReveal from "hook/useScrollReveal";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 
 function HomeProducts() {
+  let [products, setProducts] = useState([]);
   let { ref, isVisible } = useScrollReveal();
+
+  const { data } = useQuery({
+    queryKey: ["products"], 
+    queryFn: () =>
+      axios.get("http://localhost:8000/products").then((res) => res.data), 
+  });
+
+  useEffect(() => {
+    data && setProducts(data);
+  }, [data]);
 
   // Shuffle the products array randomly
   const shuffleArray = (array) => {
@@ -38,7 +51,7 @@ function HomeProducts() {
               {product.price.toLocaleString()} تومان
             </h4>
             <Link to={`/product/${product.id}`}>
-            <button>مشاهده</button>
+              <button>مشاهده</button>
             </Link>
           </div>
         ))}
