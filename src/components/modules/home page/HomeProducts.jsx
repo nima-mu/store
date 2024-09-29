@@ -10,7 +10,8 @@ function HomeProducts() {
   let [products, setProducts] = useState([]);
   let { ref, isVisible } = useScrollReveal();
 
-  const { data } = useQuery({
+
+  const { data, isLoading,error } = useQuery({
     queryKey: ["products"], 
     queryFn: () =>
       axios.get("http://localhost:8000/products").then((res) => res.data), 
@@ -27,6 +28,10 @@ function HomeProducts() {
 
   const shuffledProducts = shuffleArray(products).slice(0, 8); // Only keep the first 8 products after shuffling
 
+  // Error handling
+  if (isLoading) return <div>Loading products...</div>; // Loading state
+  if (error) return <div>Error loading products: {error.message}</div>; // Error state
+
   return (
     <>
       <div
@@ -39,8 +44,8 @@ function HomeProducts() {
         <p>برترین کالاهای دیجیتال دستچین شده با پایین ترین قیمت</p>
       </div>
       <div className={styles.products}>
-        {shuffledProducts.map((product, index) => (
-          <div className={styles.product} key={index}>
+        {shuffledProducts.map((product) => (
+          <div className={styles.product} key={product.id}>
             <div className={styles.productImageContainer}>
               <img src={product.productImage} alt={product.productName} />
             </div>

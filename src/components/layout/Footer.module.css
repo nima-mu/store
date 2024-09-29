@@ -1,0 +1,130 @@
+.footer {
+  padding: 40px 0;
+  direction: ltr;
+  text-align: right;
+  background-color: #efefef;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.newsletter,
+.contact,
+.links,
+.about {
+  flex-basis: 23%;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.form {
+  display: flex;
+  margin-top: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.input {
+  flex-grow: 1;
+  padding: 12px 15px;
+  border: 1px solid #e0e0e0;
+  border-right: none;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.input:focus {
+  border-color: #ff4d4d;
+}
+
+.input::placeholder {
+  color: #999;
+}
+
+.button {
+  padding: 12px 20px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #ff3333;
+}
+
+.button:active {
+  background-color: #e60000;
+}
+
+.contact p,
+.links li,
+.about p {
+  margin-bottom: 5px;
+}
+
+.links ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.links a {
+  text-decoration: none;
+  color: #333;
+}
+
+.social {
+  margin-top: 10px;
+}
+
+.social a {
+  margin-right: 10px;
+  color: #333;
+  font-size: 20px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .newsletter,
+  .contact,
+  .links,
+  .about {
+    flex-basis: 48%;
+  }
+}
+
+@media (max-width: 480px) {
+  .newsletter,
+  .contact,
+  .links,
+  .about {
+    flex-basis: 100%;
+  }
+  .form {
+    flex-direction: column;
+  }
+
+  .input {
+    border-right: 1px solid #e0e0e0;
+    border-bottom: none;
+    border-radius: 4px 4px 0 0;
+  }
+
+  .button {
+    border-radius: 0 0 4px 4px;
+  }
+}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./product.module.css";
-import { CartContext, useCart } from "services/CartProvider";
+import { useCart } from "services/CartProvider";
 import { FaRegTrashCan } from "react-icons/fa6";
 import useScrollReveal from "hook/useScrollReveal";
 
@@ -18,7 +18,13 @@ function ProductTemplate({ product }) {
       : setCount((prevCount) => prevCount - 1);
     await dispatch({
       type,
-      payload: { id, price, color: selectedColor,image:productImage,name: productName },
+      payload: {
+        id,
+        price,
+        color: selectedColor,
+        image: productImage,
+        name: productName,
+      },
     });
   };
 
@@ -36,9 +42,7 @@ function ProductTemplate({ product }) {
 
   return (
     <div className={styles.product}>
-      <div
-        className={styles.productImage}
-      >
+      <div className={styles.productImage}>
         <img
           src={productImage}
           alt={productName}
