@@ -1,20 +1,17 @@
 import styles from "./homeProducts.module.css";
 import truncateStr from "services/truncateStr";
 import { Link } from "react-router-dom";
-import useScrollReveal from "hook/useScrollReveal";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 
 function HomeProducts() {
   let [products, setProducts] = useState([]);
-  let { ref, isVisible } = useScrollReveal();
 
-
-  const { data, isLoading,error } = useQuery({
-    queryKey: ["products"], 
+  const { data, isLoading, error } = useQuery({
+    queryKey: ["products"],
     queryFn: () =>
-      axios.get("http://localhost:8000/products").then((res) => res.data), 
+      axios.get("http://localhost:8000/products").then((res) => res.data),
   });
 
   useEffect(() => {
@@ -35,10 +32,7 @@ function HomeProducts() {
   return (
     <>
       <div
-        ref={ref}
-        className={`${styles.productsTitle} scroll-element ${
-          isVisible ? "visible" : "hedden"
-        }`}
+        className={styles.productsTitle}
       >
         <h4>پرفروش ترین محصولات ما</h4>
         <p>برترین کالاهای دیجیتال دستچین شده با پایین ترین قیمت</p>

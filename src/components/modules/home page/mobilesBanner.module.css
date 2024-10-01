@@ -34,7 +34,9 @@
   margin-top: 25px;
 }
 
-.mobilesBanner__text span {
+.mobilesBanner__text a {
+  text-decoration: none;
+  color: #1fbff5;
   font-size: 1.1rem;
 }
 .mobilesBanner__text h4 {
@@ -55,7 +57,6 @@
   border: none;
   outline: none;
   background-color: #fff;
-  color: #1fbff5;
   position: relative;
   overflow: hidden;
   cursor: pointer;

@@ -7,32 +7,30 @@ function ProductsFilter({ products, setDisplayed }) {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("همه دسته ها");
   const [brand, setBrand] = useState("همه برند ها");
-
   const [searchParams, setSearchParams] = useSearchParams();
 
   const categories = [
     "همه دسته ها",
-    ...new Set(products?.map((product) => product.category)),
+    ...new Set(products?.map(product => product.category)),
   ];
+
   const brands = [
     "همه برند ها",
-    ...new Set(products?.map((product) => product.brand)),
+    ...new Set(products?.map(product => product.brand)),
   ];
 
   useEffect(() => {
-    const data = products?.filter((product) => {
-      const matchesSearch = product.productName
-        .toLowerCase()
-        .includes(search.toLowerCase());
+    console.log('Effect triggered: ', { search, category, brand });
 
-      const matchesCategory =
-        category === "همه دسته ها" || product.category === category;
-
+    const filteredProducts = products?.filter(product => {
+      const matchesSearch = product.productName.toLowerCase().includes(search.toLowerCase());
+      const matchesCategory = category === "همه دسته ها" || product.category === category;
       const matchesBrand = brand === "همه برند ها" || product.brand === brand;
 
       return matchesSearch && matchesCategory && matchesBrand;
     });
-    setDisplayed(data);
+
+    setDisplayed(filteredProducts);
     setSearchParams({
       search,
       category: category === "همه دسته ها" ? "All" : category,
@@ -41,6 +39,12 @@ function ProductsFilter({ products, setDisplayed }) {
   }, [search, category, brand, products, setDisplayed, setSearchParams]);
 
   useEffect(() => {
+    console.log("Search Params Updated: ", {
+      search: searchParams.get("search"),
+      category: searchParams.get("category"),
+      brand: searchParams.get("brand"),
+    });
+
     setSearch(searchParams.get("search") || "");
     const queryCategory = searchParams.get("category");
     setCategory(queryCategory === "All" ? "همه دسته ها" : queryCategory || "همه دسته ها");
@@ -63,9 +67,9 @@ function ProductsFilter({ products, setDisplayed }) {
       </div>
       <h3>دسته بندی محصولات</h3>
       <ul>
-        {categories.map((item, index) => (
+        {categories.map((item) => (
           <li
-            key={index}
+            key={item}
             onClick={() => setCategory(item)}
             className={item === category ? styles.active : ""}
           >
@@ -75,9 +79,9 @@ function ProductsFilter({ products, setDisplayed }) {
       </ul>
       <h3>برند های محصولات</h3>
       <ul>
-        {brands.map((item, index) => (
+        {brands.map((item) => (
           <li
-            key={index}
+            key={item}
             onClick={() => setBrand(item)}
             className={item === brand ? styles.active : ""}
           >

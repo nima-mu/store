@@ -1,5 +1,6 @@
 import useScrollReveal from "hook/useScrollReveal";
 import styles from "./mobilesBanner.module.css";
+import { Link } from "react-router-dom";
 function MobilesBanner() {
   let { ref, isVisible } = useScrollReveal();
 
@@ -18,7 +19,7 @@ function MobilesBanner() {
         <h3>گوشی ها</h3>
         <br />
         <button>
-          <span>مشاهده</span>
+          <Link to="/products?search=&category=گوشی&brand=All">مشاهده</Link>
         </button>
       </div>
       <div className={styles.mobilesBanner__imageContainer}>
