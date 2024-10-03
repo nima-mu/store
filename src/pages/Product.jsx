@@ -11,7 +11,7 @@ function Product() {
   const { data, error, isLoading } = useQuery({
     queryKey: ["products"],
     queryFn: () =>
-      axios.get("http://localhost:8000/products").then((res) => res.data),
+      axios.get("https://store-api-pi-dusky.vercel.app/products").then((res) => res.data),
   });
 
   useEffect(() => {
