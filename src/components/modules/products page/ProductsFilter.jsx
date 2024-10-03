@@ -1,56 +1,82 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import styles from "./productsFilter.module.css";
 import { BiSearch } from "react-icons/bi";
 import { useSearchParams } from "react-router-dom";
+import { debounce } from "lodash";
 
-function ProductsFilter({ products, setDisplayed }) {
+const ProductsFilter = ({ products, setDisplayed }) => {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("همه دسته ها");
   const [brand, setBrand] = useState("همه برند ها");
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const categories = [
-    "همه دسته ها",
-    ...new Set(products?.map(product => product.category)),
-  ];
+  const handleDebouncedSetSearch = useCallback(
+    debounce((value) => {
+      setSearch(value);
+    }, 300),
+    [] // Memoizing the function to avoid creating a new debounced function on every render
+  );
 
-  const brands = [
-    "همه برند ها",
-    ...new Set(products?.map(product => product.brand)),
-  ];
+  const categories = getUniqueCategories(products);
+  const brands = getUniqueBrands(products);
 
   useEffect(() => {
-    console.log('Effect triggered: ', { search, category, brand });
+    const filteredProducts = filterProducts(products, search, category, brand);
+    setDisplayed(filteredProducts);
+    updateSearchParams(search, category, brand);
+  }, [search, category, brand, products, setDisplayed]);
 
-    const filteredProducts = products?.filter(product => {
-      const matchesSearch = product.productName.toLowerCase().includes(search.toLowerCase());
-      const matchesCategory = category === "همه دسته ها" || product.category === category;
+  useEffect(() => {
+    updateStateFromSearchParams();
+  }, [searchParams]);
+
+  const filterProducts = (products, search, category, brand) => {
+    return products.filter((product) => {
+      const matchesSearch =
+        product.productName.toLowerCase().includes(search.toLowerCase());
+      const matchesCategory =
+        category === "همه دسته ها" || product.category === category;
       const matchesBrand = brand === "همه برند ها" || product.brand === brand;
 
       return matchesSearch && matchesCategory && matchesBrand;
     });
+  };
 
-    setDisplayed(filteredProducts);
+  const updateSearchParams = (search, category, brand) => {
     setSearchParams({
       search,
       category: category === "همه دسته ها" ? "All" : category,
       brand: brand === "همه برند ها" ? "All" : brand,
     });
-  }, [search, category, brand, products, setDisplayed, setSearchParams]);
+  };
 
-  useEffect(() => {
-    console.log("Search Params Updated: ", {
-      search: searchParams.get("search"),
-      category: searchParams.get("category"),
-      brand: searchParams.get("brand"),
-    });
+  const updateStateFromSearchParams = () => {
+    const newSearch = searchParams.get("search") || "";
+    const newCategory = getUpdatedCategory(searchParams.get("category"));
+    const newBrand = getUpdatedBrand(searchParams.get("brand"));
 
-    setSearch(searchParams.get("search") || "");
-    const queryCategory = searchParams.get("category");
-    setCategory(queryCategory === "All" ? "همه دسته ها" : queryCategory || "همه دسته ها");
-    const queryBrand = searchParams.get("brand");
-    setBrand(queryBrand === "All" ? "همه برند ها" : queryBrand || "همه برند ها");
-  }, [searchParams]);
+    if (search !== newSearch) {
+      setSearch(newSearch);
+    }
+    if (category !== newCategory) {
+      setCategory(newCategory);
+    }
+    if (brand !== newBrand) {
+      setBrand(newBrand);
+    }
+  };
+
+  const getUpdatedCategory = (queryCategory) => {
+    return queryCategory === "All" ? "همه دسته ها" : queryCategory || "همه دسته ها";
+  };
+
+  const getUpdatedBrand = (queryBrand) => {
+    return queryBrand === "All" ? "همه برند ها" : queryBrand || "همه برند ها";
+  };
+
+  const handleChangeSearch = (event) => {
+    handleDebouncedSetSearch(event.target.value);
+  };
 
   return (
     <div className={styles.productsFilter}>
@@ -58,39 +84,54 @@ function ProductsFilter({ products, setDisplayed }) {
         <input
           type="text"
           placeholder="جستجو"
+          onChange={handleChangeSearch}
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
         />
         <button>
           <BiSearch />
         </button>
       </div>
-      <h3>دسته بندی محصولات</h3>
-      <ul>
-        {categories.map((item) => (
-          <li
-            key={item}
-            onClick={() => setCategory(item)}
-            className={item === category ? styles.active : ""}
-          >
-            {item}
-          </li>
-        ))}
-      </ul>
-      <h3>برند های محصولات</h3>
-      <ul>
-        {brands.map((item) => (
-          <li
-            key={item}
-            onClick={() => setBrand(item)}
-            className={item === brand ? styles.active : ""}
-          >
-            {item}
-          </li>
-        ))}
-      </ul>
+      <FilterSection
+        title="دسته بندی محصولات"
+        items={categories}
+        selected={category}
+        onSelect={setCategory}
+      />
+      <FilterSection
+        title="برند های محصولات"
+        items={brands}
+        selected={brand}
+        onSelect={setBrand}
+      />
     </div>
   );
-}
+};
+
+const FilterSection = ({ title, items, selected, onSelect }) => (
+  <>
+    <h3>{title}</h3>
+    <ul>
+      {items.map((item) => (
+        <li
+          key={item}
+          onClick={() => onSelect(item)}
+          className={item === selected ? styles.active : ""}
+        >
+          {item}
+        </li>
+      ))}
+    </ul>
+  </>
+);
+
+const getUniqueCategories = (products) => {
+  if (!products) return [];
+  return ["همه دسته ها", ...new Set(products.map((product) => product.category))];
+};
+
+const getUniqueBrands = (products) => {
+  if (!products) return [];
+  return ["همه برند ها", ...new Set(products.map((product) => product.brand))];
+};
 
 export default ProductsFilter;

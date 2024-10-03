@@ -24,6 +24,7 @@ function Router() {
       <Route path="/cart" element={<Cart />} />
       <Route path="/auth" element={<Auth />} />
       <Route path="/admin" element={isLogedIn && name == "admin" ? <Admin /> : <Navigate to="/" replace />} />
+      <Route path="/*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 }

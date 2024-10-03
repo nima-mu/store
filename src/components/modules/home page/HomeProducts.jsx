@@ -4,10 +4,12 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import Spinner from "components/spinner/Spinner";
 
 function HomeProducts() {
   let [products, setProducts] = useState([]);
 
+  // get data from json server
   const { data, isLoading, error } = useQuery({
     queryKey: ["products"],
     queryFn: () =>
@@ -31,9 +33,7 @@ function HomeProducts() {
 
   return (
     <>
-      <div
-        className={styles.productsTitle}
-      >
+      <div className={styles.productsTitle}>
         <h4>پرفروش ترین محصولات ما</h4>
         <p>برترین کالاهای دیجیتال دستچین شده با پایین ترین قیمت</p>
       </div>
@@ -41,7 +41,11 @@ function HomeProducts() {
         {shuffledProducts.map((product) => (
           <div className={styles.product} key={product.id}>
             <div className={styles.productImageContainer}>
-              <img src={product.productImage} alt={product.productName} />
+              {isLoading ? (
+                <Spinner />
+              ) : (
+                <img src={product.productImage} alt={product.productName} />
+              )}
             </div>
             <p className={styles.product__name}>
               {truncateStr(product.productName, 30)}

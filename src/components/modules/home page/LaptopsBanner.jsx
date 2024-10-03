@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./laptopsBanner.module.css";
 import useScrollReveal from "hook/useScrollReveal";
+import { Link } from "react-router-dom";
 
 function LaptopsBanner() {
   const { ref, isVisible } = useScrollReveal();
-
 
   return (
     <div
@@ -20,7 +20,9 @@ function LaptopsBanner() {
         تجربه‌ی کاری خود را بهبود دهید.
       </p>
       <img src="src/assets/images/mackbook.webp" alt="لپ تاپ" />
-      <button>مشاهده</button>
+      <Link to="/products?search=&category=لپ+تاپ&brand=All">
+        <button>مشاهده</button>
+      </Link>
     </div>
   );
 }

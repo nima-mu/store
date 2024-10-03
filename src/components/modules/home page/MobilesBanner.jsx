@@ -18,9 +18,9 @@ function MobilesBanner() {
         <br />
         <h3>گوشی ها</h3>
         <br />
-        <button>
-          <Link to="/products?search=&category=گوشی&brand=All">مشاهده</Link>
-        </button>
+        <Link to="/products?search=&category=گوشی&brand=All">
+          <button>مشاهده</button>
+        </Link>
       </div>
       <div className={styles.mobilesBanner__imageContainer}>
         <div></div>

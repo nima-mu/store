@@ -39,6 +39,8 @@
   cursor: pointer;
 }
 
+
+
 .laptopsBanner button:hover {
   transform: scale(1.1);
 }
