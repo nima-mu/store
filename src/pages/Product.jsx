@@ -11,13 +11,12 @@ function Product() {
   const { data, error, isLoading } = useQuery({
     queryKey: ["products"],
     queryFn: () =>
-      axios.get("https://store-api-pi-dusky.vercel.app/products").then((res) => res.data),
+      axios.get(`https://store-api-pi-dusky.vercel.app/products/${id}`).then((res) => res.data),
   });
 
   useEffect(() => {
     if (data) {
-      const foundProduct = data.find((item) => item.id === id);
-      setProduct(foundProduct || null);
+      setProduct(data || null);
     }
   }, [data, id]);
 

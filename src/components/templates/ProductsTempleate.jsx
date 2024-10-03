@@ -10,9 +10,9 @@ function ProductsTemplate() {
   const [displayed, setDisplayed] = useState([]);
 
   const { data, error, isLoading } = useQuery({
-    queryKey: ["products"], // Updated to the new object format
+    queryKey: ["products"], 
     queryFn: () =>
-      axios.get("https://store-api-pi-dusky.vercel.app/products").then((res) => res.data), // Assuming the response structure
+      axios.get("https://store-api-pi-dusky.vercel.app/products").then((res) => res.data),
   });
 
   useEffect(() => {
