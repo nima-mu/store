@@ -5,6 +5,7 @@ import styles from "./products.module.css";
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import Spinner from "components/spinner/Spinner";
 
 function ProductsTemplate() {
   const [displayed, setDisplayed] = useState([]);
@@ -22,8 +23,8 @@ function ProductsTemplate() {
     }
   }, [data]);
 
-  if (isLoading) return <div>Loading products...</div>;
-  if (error) return <div>Error loading products: {error.message}</div>;
+  if (isLoading) return <div className={styles.loading}><Spinner /></div>;
+  if (error) return <div className={styles.error}>Error loading products: {error.message}</div>;
 
   return (
     <div>
