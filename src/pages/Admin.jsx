@@ -1,8 +1,7 @@
+import AdminTempleate from "components/templates/AdminTempleate";
 
 function Admin() {
-  return (
-    <div>Admin</div>
-  )
+  return <AdminTempleate />;
 }
 
-export default Admin
+export default Admin;

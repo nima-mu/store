@@ -17,7 +17,8 @@
       "ram": "6 GB",
       "IncludedItems": "دفترچه‌ راهنما",
       "createdAt": "2024-07-14T03:39:24.792Z",
-      "updatedAt": "2024-07-14T03:39:24.792Z"
+      "updatedAt": "2024-07-14T03:39:24.792Z",
+      "isAvailable": true
     },
     {
       "colors": ["black", "gold", "gray"],
@@ -36,7 +37,8 @@
       "ram": "12 GB",
       "IncludedItems": "دفترچه‌ راهنما",
       "createdAt": "2024-07-14T06:11:02.017Z",
-      "updatedAt": "2024-07-14T06:11:02.017Z"
+      "updatedAt": "2024-07-14T06:11:02.017Z",
+      "isAvailable": true
     },
     {
       "colors": ["black", "blue", "gold"],
@@ -55,7 +57,8 @@
       "ram": "8 GB",
       "IncludedItems": "دفترچه‌ راهنما، شارژر،",
       "createdAt": "2024-07-14T06:13:00.165Z",
-      "updatedAt": "2024-07-14T06:13:00.165Z"
+      "updatedAt": "2024-07-14T06:13:00.165Z",
+      "isAvailable": true
     },
     {
       "colors": ["black", "blue"],
@@ -74,7 +77,8 @@
       "ram": "8 GB",
       "IncludedItems": "دفترچه‌ راهنما، کابل USB",
       "createdAt": "2024-07-14T06:14:53.995Z",
-      "updatedAt": "2024-07-14T06:14:53.995Z"
+      "updatedAt": "2024-07-14T06:14:53.995Z",
+      "isAvailable": true
     },
     {
       "colors": ["black", "gray", "lemonchiffon"],
@@ -93,7 +97,8 @@
       "ram": "12 GB",
       "IncludedItems": "دفترچه‌ راهنما، شارژر، قاب ژله‌ای",
       "createdAt": "2024-07-14T06:17:07.898Z",
-      "updatedAt": "2024-07-14T06:17:07.898Z"
+      "updatedAt": "2024-07-14T06:17:07.898Z",
+      "isAvailable": true
     },
     {
       "colors": ["blue"],
@@ -112,7 +117,8 @@
       "ram": "8 GB",
       "IncludedItems": "دفترچه‌ راهنما، شارژر، قاب ژله‌ای",
       "createdAt": "2024-07-14T06:21:21.966Z",
-      "updatedAt": "2024-07-14T06:21:21.966Z"
+      "updatedAt": "2024-07-14T06:21:21.966Z",
+      "isAvailable": true
     },
     {
       "colors": ["black", "white"],
@@ -131,7 +137,8 @@
       "ram": "4 GB",
       "IncludedItems": "دفترچه‌ راهنما",
       "createdAt": "2024-07-14T06:26:50.202Z",
-      "updatedAt": "2024-07-14T06:26:50.202Z"
+      "updatedAt": "2024-07-14T06:26:50.202Z",
+      "isAvailable": true
     },
     {
       "colors": ["black", "lightgoldenrodyellow", "green"],
@@ -150,7 +157,8 @@
       "ram": "8 GB",
       "IncludedItems": "دفترچه‌ راهنما",
       "createdAt": "2024-07-14T06:28:50.588Z",
-      "updatedAt": "2024-07-14T06:28:50.588Z"
+      "updatedAt": "2024-07-14T06:28:50.588Z",
+      "isAvailable": true
     },
     {
       "colors": ["blue", "gold"],
@@ -169,7 +177,8 @@
       "ram": "6 GB",
       "IncludedItems": "دفترچه‌ راهنما، کابل Lightning",
       "createdAt": "2024-07-14T06:30:49.203Z",
-      "updatedAt": "2024-07-14T06:30:49.203Z"
+      "updatedAt": "2024-07-14T06:30:49.203Z",
+      "isAvailable": true
     },
     {
       "colors": ["blue"],
@@ -188,7 +197,8 @@
       "ram": "12 GB",
       "IncludedItems": "دفترچه‌ راهنما",
       "createdAt": "2024-07-14T06:33:29.677Z",
-      "updatedAt": "2024-07-14T06:33:29.677Z"
+      "updatedAt": "2024-07-14T06:33:29.677Z",
+      "isAvailable": true
     },
     {
       "colors": ["gray"],
@@ -207,7 +217,8 @@
       "ram": "12 GB",
       "IncludedItems": "دفترچه‌ راهنما",
       "createdAt": "2024-07-14T06:34:57.325Z",
-      "updatedAt": "2024-07-14T06:34:57.325Z"
+      "updatedAt": "2024-07-14T06:34:57.325Z",
+      "isAvailable": true
     },
     {
       "colors": ["black"],
@@ -222,7 +233,8 @@
       "category": "لپ تاپ",
       "brand": "ام اس آی",
       "createdAt": "2024-07-14T03:33:51.103Z",
-      "updatedAt": "2024-07-14T03:33:51.103Z"
+      "updatedAt": "2024-07-14T03:33:51.103Z",
+      "isAvailable": true
     },
     {
       "colors": ["silver"],
@@ -237,7 +249,8 @@
       "category": "لپ تاپ",
       "brand": "اچ پی",
       "createdAt": "2024-07-14T07:16:43.071Z",
-      "updatedAt": "2024-07-14T07:16:43.071Z"
+      "updatedAt": "2024-07-14T07:16:43.071Z",
+      "isAvailable": true
     },
     {
       "colors": ["black"],
@@ -252,7 +265,8 @@
       "category": "لپ تاپ",
       "brand": "ایسوس",
       "createdAt": "2024-07-14T07:19:02.226Z",
-      "updatedAt": "2024-07-14T07:19:02.226Z"
+      "updatedAt": "2024-07-14T07:19:02.226Z",
+      "isAvailable": true
     },
     {
       "colors": ["black"],
@@ -267,7 +281,8 @@
       "category": "لپ تاپ",
       "brand": "ایسوس",
       "createdAt": "2024-07-14T07:20:50.335Z",
-      "updatedAt": "2024-07-14T07:20:50.335Z"
+      "updatedAt": "2024-07-14T07:20:50.335Z",
+      "isAvailable": true
     },
     {
       "colors": ["black"],
@@ -282,7 +297,8 @@
       "category": "لپ تاپ",
       "brand": "ایسوس",
       "createdAt": "2024-07-14T07:22:17.114Z",
-      "updatedAt": "2024-07-14T07:22:17.114Z"
+      "updatedAt": "2024-07-14T07:22:17.114Z",
+      "isAvailable": true
     },
     {
       "colors": ["black"],
@@ -297,7 +313,8 @@
       "category": "لپ تاپ",
       "brand": "ایسر",
       "createdAt": "2024-07-14T07:24:14.112Z",
-      "updatedAt": "2024-07-14T07:24:14.112Z"
+      "updatedAt": "2024-07-14T07:24:14.112Z",
+      "isAvailable": true
     },
     {
       "colors": ["beige", "silver", "gray", "blue"],
@@ -312,7 +329,8 @@
       "category": "لپ تاپ",
       "brand": "اپل",
       "createdAt": "2024-07-14T07:26:18.501Z",
-      "updatedAt": "2024-07-14T07:26:18.501Z"
+      "updatedAt": "2024-07-14T07:26:18.501Z",
+      "isAvailable": true
     },
     {
       "colors": ["silver"],
@@ -327,7 +345,8 @@
       "category": "لپ تاپ",
       "brand": "اپل",
       "createdAt": "2024-07-14T07:31:22.950Z",
-      "updatedAt": "2024-07-14T07:31:22.950Z"
+      "updatedAt": "2024-07-14T07:31:22.950Z",
+      "isAvailable": true
     },
     {
       "colors": ["gray"],
@@ -342,7 +361,8 @@
       "category": "لپ تاپ",
       "brand": "لنوو",
       "createdAt": "2024-07-14T07:35:17.335Z",
-      "updatedAt": "2024-07-14T07:35:17.335Z"
+      "updatedAt": "2024-07-14T07:35:17.335Z",
+      "isAvailable": true
     },
     {
       "colors": ["black"],
@@ -357,7 +377,8 @@
       "category": "لپ تاپ",
       "brand": "دل",
       "createdAt": "2024-07-14T07:36:36.270Z",
-      "updatedAt": "2024-07-14T07:36:36.270Z"
+      "updatedAt": "2024-07-14T07:36:36.270Z",
+      "isAvailable": true
     },
     {
       "colors": ["black"],
@@ -372,7 +393,8 @@
       "category": "لپ تاپ",
       "brand": "اچ پی",
       "createdAt": "2024-07-14T07:37:29.237Z",
-      "updatedAt": "2024-07-14T07:37:29.237Z"
+      "updatedAt": "2024-07-14T07:37:29.237Z",
+      "isAvailable": true
     }
   ]
 }
