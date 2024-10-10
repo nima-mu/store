@@ -33,7 +33,7 @@ const ProductsFilter = ({ products, setDisplayed }) => {
   const filterProducts = (products, search, category, brand) => {
     return products.filter((product) => {
       const matchesSearch =
-        product.productName.toLowerCase().includes(search.toLowerCase());
+        product.productName?.toLowerCase().includes(search.toLowerCase());
       const matchesCategory =
         category === "همه دسته ها" || product.category === category;
       const matchesBrand = brand === "همه برند ها" || product.brand === brand;
