@@ -8,18 +8,21 @@ function ProductsDisplay({ displayed }) {
         <h2>loading...</h2>
       ) : (
         <div className={styles.productsDisplay}>
-          {displayed?.map((product) => (
-            <div key={product.id} className={styles.product}>
-              <div className={styles.productImageContainer}>
-                <img src={product.productImage} />
-              </div>
-              <h4>{product.productName}</h4>
-              <p>{product.price.toLocaleString()} تومان</p>
-              <Link to={`/product/${product.id}`}>
-                <button>مشاهده</button>
-              </Link>
-            </div>
-          ))}
+          {displayed?.map(
+            (product) =>
+              product.isAvailable && (
+                <div key={product.id} className={styles.product}>
+                  <div className={styles.productImageContainer}>
+                    <img src={product.productImage} />
+                  </div>
+                  <h4>{product.productName}</h4>
+                  <p>{product.price.toLocaleString()} تومان</p>
+                  <Link to={`/product/${product.id}`}>
+                    <button>مشاهده</button>
+                  </Link>
+                </div>
+              )
+          )}
         </div>
       )}
     </>

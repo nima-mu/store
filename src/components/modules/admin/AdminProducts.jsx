@@ -28,9 +28,25 @@ export default function AdminProducts() {
 
   let submitPriceHandler = (index, productId) => {
     try {
-      axios.put(`https://store-api-pi-dusky.vercel.app/products/${productId}`, {
-        price: prices[index],
-      });
+      axios.patch(
+        `https://store-api-pi-dusky.vercel.app/products/${productId}`,
+        {
+          price: prices[index],
+        }
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  let availableHandler = (productId, isAvailable) => {
+    try {
+      axios.patch(
+        `https://store-api-pi-dusky.vercel.app/products/${productId}`,
+        {
+          isAvailable: !isAvailable,
+        }
+      );
     } catch (error) {
       console.log(error);
     }
@@ -54,7 +70,8 @@ export default function AdminProducts() {
             <div className={styles.productInfo}>
               <p className={styles.productName}>{product.productName}</p>
               <p className={styles.price}>
-                قیمت قبلی: <strong>{product.price}</strong> تومان
+                قیمت قبلی: <strong>{product.price.toLocaleString()}</strong>{" "}
+                تومان
               </p>
             </div>
             <div className={styles.actions}>
@@ -71,7 +88,10 @@ export default function AdminProducts() {
               >
                 Change price
               </button>
-              <button className={`${styles.button} ${styles.buttonOutline}`}>
+              <button
+                onChange={availableHandler(product.id, product.isAvailable)}
+                className={`${styles.button} ${styles.buttonOutline}`}
+              >
                 Set to Not Available
               </button>
             </div>
