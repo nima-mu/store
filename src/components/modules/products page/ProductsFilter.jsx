@@ -4,7 +4,7 @@ import { BiSearch } from "react-icons/bi";
 import { useSearchParams } from "react-router-dom";
 import { debounce } from "lodash";
 
-const ProductsFilter = ({ products, setDisplayed }) => {
+const ProductsFilter = ({ products = [], setDisplayed }) => {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("همه دسته ها");
   const [brand, setBrand] = useState("همه برند ها");
@@ -30,16 +30,17 @@ const ProductsFilter = ({ products, setDisplayed }) => {
     updateStateFromSearchParams();
   }, [searchParams]);
 
-  const filterProducts = (products, search, category, brand) => {
-    return products.filter((product) => {
-      const matchesSearch =
-        product.productName?.toLowerCase().includes(search.toLowerCase());
+  const filterProducts = (products = [], search, category, brand) => {
+    return Array.isArray(products) ? products.filter((product) => {
+      const matchesSearch = product.productName
+        ?.toLowerCase()
+        .includes(search.toLowerCase());
       const matchesCategory =
         category === "همه دسته ها" || product.category === category;
       const matchesBrand = brand === "همه برند ها" || product.brand === brand;
 
       return matchesSearch && matchesCategory && matchesBrand;
-    });
+    }) : [];
   };
 
   const updateSearchParams = (search, category, brand) => {
@@ -67,7 +68,9 @@ const ProductsFilter = ({ products, setDisplayed }) => {
   };
 
   const getUpdatedCategory = (queryCategory) => {
-    return queryCategory === "All" ? "همه دسته ها" : queryCategory || "همه دسته ها";
+    return queryCategory === "All"
+      ? "همه دسته ها"
+      : queryCategory || "همه دسته ها";
   };
 
   const getUpdatedBrand = (queryBrand) => {
@@ -125,12 +128,15 @@ const FilterSection = ({ title, items, selected, onSelect }) => (
 );
 
 const getUniqueCategories = (products) => {
-  if (!products) return [];
-  return ["همه دسته ها", ...new Set(products.map((product) => product.category))];
+  if (!products.length) return [];
+  return [
+    "همه دسته ها",
+    ...new Set(products.map((product) => product.category)),
+  ];
 };
 
 const getUniqueBrands = (products) => {
-  if (!products) return [];
+  if (!products.length) return [];
   return ["همه برند ها", ...new Set(products.map((product) => product.brand))];
 };
 
