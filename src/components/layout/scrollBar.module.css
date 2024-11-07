@@ -1,0 +1,21 @@
+@media (prefers-reduced-motion: no-preference) {
+  .scrollBar {
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    height: 5px;
+    width: 100%;
+    scale: 0 1;
+    animation: scroll linear;
+    animation-timeline: scroll();
+    background-color: green;
+    border-end-start-radius: 10rem;
+    transform-origin: left;
+  }
+
+  @keyframes scroll {
+    to {
+      scale: 1 1;
+    }
+  }
+}

@@ -36,12 +36,28 @@
   max-width: 1200px;
   margin: 0 auto 2rem;
   padding: 0 1rem;
+  display: flex;
+  justify-content: center;
 }
 
 .image img {
-  width: 100%;
+  width: 90%;
   border-radius: 1rem;
   box-shadow: 0 0 8px #4b4b4b;
+  animation: fade-in linear;
+  animation-timeline: view();
+  animation-range: entry;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: .5;
+    scale: 0.7 0.7;
+  }
+  to {
+    scale: 1 1;
+    opacity: 1;
+  }
 }
 
 .mission {
@@ -101,10 +117,10 @@
   justify-content: center;
   border-radius: 50%;
   cursor: pointer;
-  transition: backgound .2s;
+  transition: backgound 0.2s;
 }
 
-.teamMember span:hover{
+.teamMember span:hover {
   background: #171717;
 }
 
