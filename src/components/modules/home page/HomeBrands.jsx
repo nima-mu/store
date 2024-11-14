@@ -19,7 +19,7 @@ const ImageComponent = () => {
   for (let i = 1; i < 6; i++) {
     imageElements.push(
       <div key={i} className={styles.brands__imageContainer}>
-        <img src={`assets/images/${i}.webp`} alt={`Image ${i}`} />
+        <img src={`/src/assets/images/${i}.webp`} alt={`Image ${i}`} />
       </div>
     );
   }
