@@ -19,7 +19,7 @@ function LaptopsBanner() {
         به هدف‌های خود برسید. با طراحی‌های منحصر به فرد و قدرت فوق العاده،
         تجربه‌ی کاری خود را بهبود دهید.
       </p>
-      <img src="/src/assets/images/mackbook.webp" alt="لپ تاپ" />
+      <img src="/images/mackbook.webp" alt="لپ تاپ" />
       <Link to="/products?search=&category=لپ+تاپ&brand=All">
         <button>مشاهده</button>
       </Link>

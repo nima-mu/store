@@ -24,7 +24,7 @@ function MobilesBanner() {
       </div>
       <div className={styles.mobilesBanner__imageContainer}>
         <div></div>
-        <img src="/src/assets/images/iphone15.png" draggable={false} />
+        <img src="/images/iphone15.png" draggable={false} />
       </div>
     </div>
   );
