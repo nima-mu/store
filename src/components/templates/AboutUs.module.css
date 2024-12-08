@@ -124,6 +124,8 @@
   background: #171717;
 }
 
+
+
 @media (max-width: 768px) {
   .title {
     font-size: 2rem;

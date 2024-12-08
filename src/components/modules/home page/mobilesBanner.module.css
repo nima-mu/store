@@ -4,7 +4,8 @@
   margin: 1rem auto;
   border-radius: 2.5rem;
   background: linear-gradient(35deg, #1fbff5, #1aede2);
-  box-shadow: 0 0 15px #8f8f8fce;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 7px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 5px -1px;
   display: flex;
   justify-content: space-evenly;
 }
@@ -76,3 +77,136 @@
 .mobilesBanner__text button:hover::after {
   left: -50%;
 }
+
+@media (max-width: 1300px) {
+  .mobilesBanner {
+    width: 70%;
+    height: 450px;
+  }
+}
+@media (max-width: 1100px) {
+  .mobilesBanner {
+    width: 80%;
+    height: 450px;
+    border-radius: 2.2rem;
+  }
+}
+
+@media (max-width: 950px) {
+  .mobilesBanner {
+    width: 80%;
+    height: 400px;
+  }
+
+  .mobilesBanner__text h4 {
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+  .mobilesBanner__text h3 {
+    font-size: 2.2rem;
+  }
+
+  .mobilesBanner__text button {
+    color: #1fbff5;
+    padding: 0.4rem 0.8rem;
+    margin: 0.5rem 0;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .mobilesBanner {
+    width: 80%;
+    height: 300px;
+  }
+}
+
+@media (max-width: 700px) {
+  .mobilesBanner {
+    width: 85%;
+    height: 270px;
+    border-radius: 1.8rem;
+  }
+
+  .mobilesBanner__text span {
+    font-size: 0.8rem;
+  }
+
+  .mobilesBanner__text h4 {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  .mobilesBanner__text h3 {
+    font-size: 1.9rem;
+  }
+
+  .mobilesBanner__text button {
+    padding: 0.4rem 0.8rem;
+    margin: 0.5rem 0;
+    font-size: 0.8rem;
+  }
+}
+@media (max-width: 600px) {
+  .mobilesBanner {
+    width: 85%;
+    height: 220px;
+  }
+}
+@media (max-width: 550px) {
+  .mobilesBanner {
+    width: 85%;
+    height: 200px;
+  }
+
+  .mobilesBanner__text {
+    line-height: 0.8;
+  }
+
+  .mobilesBanner__text span {
+    font-size: 0.7rem;
+  }
+
+  .mobilesBanner__text h4 {
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+  .mobilesBanner__text h3 {
+    font-size: 1.2rem;
+  }
+
+  .mobilesBanner__text button {
+    padding: 0.4rem 0.8rem;
+    margin: 0.3rem 0;
+    font-size: 0.6rem;
+    /* font-weight: 400; */
+  }
+}
+
+@media (max-width: 480px) {
+  .mobilesBanner {
+    width: 90%;
+    height: 200px;
+  }
+}
+
+@media (max-width: 440px) {
+  .mobilesBanner {
+    width: 93%;
+    height: 190px;
+    border-radius: 1.5rem;
+  }
+}
+@media (max-width: 410px) {
+  .mobilesBanner {
+    width: 93%;
+    height: 170px;
+    border-radius: 1.3rem;
+  }
+}
+@media (max-width: 350px) {
+  .mobilesBanner {
+    width: 95%;
+    height: 170px;
+  }
+}
+
