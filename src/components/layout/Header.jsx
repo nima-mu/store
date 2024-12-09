@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { CiShoppingBasket } from "react-icons/ci";
 import { FiMenu } from "react-icons/fi";
 import { IoIosLogIn } from "react-icons/io";
-import styles from "./Header.module.css";
+import styles from "./header.module.css";
 import { useCart } from "services/CartProvider";
 
 function Header() {
