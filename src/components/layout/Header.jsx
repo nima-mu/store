@@ -9,7 +9,8 @@ import { useCart } from "services/CartProvider";
 function Header() {
   const { cartState } = useCart();
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  let menuRef = useRef()
+  let menuRef = useRef();
+  let menuIconRef = useRef();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -20,12 +21,15 @@ function Header() {
 
   useEffect(() => {
     let handler = (e) => {
-      if (!menuRef.current.contains(e.target)) {
-        closeMenu()
+      if (
+        !menuRef.current.contains(e.target) &&
+        !menuIconRef.current.contains(e.target)
+      ) {
+        closeMenu();
       }
-    }
-    document.addEventListener("mousedown",handler)
-  })
+    };
+    document.addEventListener("mousedown", handler);
+  });
 
   return (
     <header className={styles.header}>
@@ -37,6 +41,7 @@ function Header() {
           className={styles.header__menuToggle}
           onClick={toggleMenu}
           aria-label="Toggle menu"
+          ref={menuIconRef}
         >
           <FiMenu />
         </button>
@@ -47,23 +52,14 @@ function Header() {
           ref={menuRef}
         >
           <ul>
-            <li
-            onClick={closeMenu}>
-              <NavLink to="/">
-                خانه
-              </NavLink>
+            <li onClick={closeMenu}>
+              <NavLink to="/">خانه</NavLink>
             </li>
-            <li
-            onClick={closeMenu}>
-              <NavLink to="/products">
-                محصولات
-              </NavLink>
+            <li onClick={closeMenu}>
+              <NavLink to="/products">محصولات</NavLink>
             </li>
-            <li
-            onClick={closeMenu}>
-              <NavLink to="/aboutUs">
-                درباره ما
-              </NavLink>
+            <li onClick={closeMenu}>
+              <NavLink to="/aboutUs">درباره ما</NavLink>
             </li>
           </ul>
         </nav>
