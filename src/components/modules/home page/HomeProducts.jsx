@@ -49,7 +49,7 @@ function HomeProducts() {
                 <img src={product.productImage} alt={product.productName} />
               </div>
               <p className={styles.product__name}>
-                {truncateStr(product.productName, 30)}
+                {truncateStr(product.productName, 25)}
               </p>
               <h4 className={styles.product__price}>
                 {product.price.toLocaleString()} تومان
